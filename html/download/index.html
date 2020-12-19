@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=yes">
+    <title>下载</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="./static/js/rem.js"></script>
+    <link rel="stylesheet" href="./static/css/index.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .content {
+            width: 7.5rem;
+            /* height: 100vh; */
+            background-color: #fff;
+            /* background: url(./static/img/cgbd.png);
+            
+            background-repeat: no-repeat;
+            background-size: 100% 100%; */
+            /* margin: 0 auto; */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cont_text {
+            /* width: 5.4rem;
+            height: 6.3rem; */
+            /* background: url(./static/img/info.png);
+            background-color: rgb(233, 234, 234);
+            background-repeat: no-repeat;
+            background-size: 100%; */
+            position: absolute;
+            left: 50%;
+            width: 100%;
+            bottom: 34px;
+            transform: translate(-50%);
+            border-radius: .15rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .textips {
+            font-size: .25rem;
+            /* padding: .3rem; */
+            width: 5rem;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.6rem;
+            color: rgb(92, 179, 165)
+        }
+
+        .button {
+
+            height: 1.0rem;
+
+            color: #fff;
+            padding: 0 0.3rem;
+            background: linear-gradient(90deg, #FFCDAC, #E46EC4);
+            box-shadow: 0px 12px 7px 0px rgba(68, 32, 81, 0.17);
+            /* box-shadow:0px 3px 9px 1px rgba(24,109,63,0.38), 0px -10px 0px 0px rgba(34,139,83,0.61), 0px -10px 0px 0px rgba(34,139,83,0.61), 0px -10px 0px 0px rgba(34,139,83,0.61); */
+            border-radius: 0.5rem;
+            font-size: 17px;
+            letter-spacing: .03rem;
+            font-weight: bold;
+        }
+
+        #box {
+            width: 4rem;
+            height: .8rem;
+            line-height: .8rem;
+            position: absolute;
+            left: 50%;
+            bottom: .6rem;
+            transform: translate(-50%);
+            color: #000;
+            background-color: rgb(255, 255, 255);
+            border-radius: .4rem;
+            font-size: .28rem;
+            letter-spacing: .03rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+
+
+        /* 3.从头开始增加的进度条
+    将宽度设为和父级同样的宽度即可。 */
+
+        #box {
+            /*        
+        width: 200px;
+        height: 30px;
+        margin: 20px auto;
+        border: 1px solid #000;
+        position: relative; */
+        }
+
+        @keyframes demo {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        #box .div_j {
+            animation: 30s demo ease-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: .8rem;
+            color: #000;
+            /* background:repeating-linear-gradient(-45deg,red 0px,red 10px,blue 10px,blue 20px) ; */
+            background-color: rgb(38, 115, 242);
+        }
+
+        #div_text {
+            position: absolute;
+            width: 100%;
+
+            z-index: 9999;
+        }
+
+        .button_up {}
+
+        .button_set {
+            background-color: #ccc;
+        }
+
+        .zz {
+            background: rgba(0, 0, 0, .5);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 22;
+            display: none;
+        }
+
+        .zz img {
+            display: block;
+            border: none;
+            width: 0.52rem;
+            height: 0.72rem;
+            position: absolute;
+            top: 0.32rem;
+            right: 0.72rem;
+            z-index: 33;
+        }
+
+        .sp {
+            font-size: 0.28rem;
+            line-height: .4rem;
+            color: #FFFFFF;
+            position: absolute;
+            top: 1.12rem;
+            right: 0.36rem;
+            z-index: 33;
+            text-align: center;
+        }
+
+        .sp .p5 {
+            color: #00fe77;
+        }
+
+        .p6 {
+            display: inline-block;
+        }
+
+        .p5 {
+            display: inline-block;
+        }
+
+        .p4 {
+            display: inline-block;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .loading {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: #fff;
+        }
+
+        .loading .pic {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .loading .pic i {
+            display: block;
+            float: left;
+            width: 6px;
+            height: 50px;
+            background: #399;
+            margin: 0 2px;
+            /*各个竖线的高度缩小到40%的长度*/
+            -webkit-transform: scaleY(0.4);
+            -ms-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+            /*调用动画load，动画完成总时间为1.2s，连续做动画*/
+            -webkit-animation: load 1.2s infinite;
+            animation: load 1.2s infinite;
+        }
+
+        /*设置每个竖线的延长时间，第一个不用延长时间，第二个依次延长0.1s*/
+
+        .loading .pic i:nth-child(2) {
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+        }
+
+        .loading .pic i:nth-child(3) {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+
+        .loading .pic i:nth-child(4) {
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        .loading .pic i:nth-child(5) {
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+
+        /*定义加载动画load*/
+
+        @-webkit-keyframes load {
+
+            0%,
+            40%,
+            100% {
+                -webkit-transform: scaleY(0.4);
+                transform: scaleY(0.4);
+            }
+
+            20% {
+                -webkit-transform: scaleY(1);
+                transform: scaleY(1);
+            }
+        }
+
+        @keyframes load {
+
+            0%,
+            40%,
+            100% {
+                -webkit-transform: scaleY(0.4);
+                transform: scaleY(0.4);
+            }
+
+            20% {
+                -webkit-transform: scaleY(1);
+                transform: scaleY(1);
+            }
+        }
+
+        /* #box{
+        width: 200px;
+        height: 30px;
+        margin: 20px auto;
+        border: 1px solid #000;
+    }
+    #box div{
+        width: 100%;
+        height: 30px;
+        background:repeating-linear-gradient(-45deg,red 0px,red 10px,blue 10px,blue 20px) ;
+} */
+
+        #progressbar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -90px;
+            margin-top: -10px;
+            width: 100%;
+            height: .8rem;
+            /* border:1px solid darkgray; */
+        }
+
+        /*在进度条元素上调用动画*/
+
+        #fill {
+            animation: move 30s;
+            text-align: center;
+            background-color: #6caf00;
+        }
+
+        /*实现元素宽度的过渡动画效果*/
+
+        @keyframes move {
+            0% {
+                width: 0;
+
+            }
+
+            100% {
+                width: 99.6%;
+            }
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0.4rem;
+        }
+
+        .logo-wrap-img {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        .section-wrap-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.3rem;
+        }
+
+        .section-wrap {
+            margin-top: 0rem;
+            width: 6.2rem;
+            height: 6.2rem;
+            background-color: #F7F2FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-wrap-one {
+            width: 5.6rem;
+            height: 5.6rem;
+
+            border: 1px solid #E4D9F6;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .center-text-img {
+            width: 2.36rem;
+            height: 1.3rem;
+            position: absolute;
+            left: 50%;
+            top: 0.7rem;
+            transform: translateX(-50%);
+        }
+
+        .four-img {
+            width: 1.34rem;
+            height: 1.34rem;
+            position: absolute;
+            left: -0.5rem;
+            top: 45%;
+            transform: translateY(-50%);
+        }
+
+        .five-img {
+            width: 1.14rem;
+            height: 1.14rem;
+            position: absolute;
+            left: 0rem;
+            bottom: 15%;
+            /* transform: translateY(-50%); */
+        }
+
+        .three-img {
+            width: 1.04rem;
+            height: 1.04rem;
+            position: absolute;
+            left: 25%;
+            bottom: 30%;
+            /* transform: translateY(-50%); */
+        }
+
+        .one-img {
+            width: 1.2rem;
+            height: 1.2rem;
+            position: absolute;
+            right: 25%;
+            bottom: 36%;
+            /* transform: translateY(-50%); */
+        }
+
+        .six-img {
+            width: 1.1rem;
+            height: 1.1rem;
+            position: absolute;
+            right: -0.1rem;
+            bottom: 53%;
+            /* transform: translateY(-50%); */
+        }
+
+        .two-img {
+            width: 1.18rem;
+            height: 1.18rem;
+            position: absolute;
+            right: 0.2rem;
+            bottom: 17%;
+            /* transform: translateY(-50%); */
+        }
+
+        .people-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: -0.7rem;
+        }
+
+        .people-img {
+            width: 2.9rem;
+            height: 4.6rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <!-- <div class="logo-wrap">
+            <img src="./static/img/startLogo.png" alt="" class="logo-wrap-img">
+        </div> -->
+        <div class="section-wrap-flex">
+            <div class="section-wrap">
+                <div class="section-wrap-one">
+                    <img src="./static/img/center-text.png" alt="" class="center-text-img">
+                    <img src="./static/img/four.png" alt="" class="four-img">
+                    <img src="./static/img/five.png" alt="" class="five-img">
+                    <img src="./static/img/three.png" alt="" class="three-img">
+                    <img src="./static/img/one.png" alt="" class="one-img">
+                    <img src="./static/img/six.png" alt="" class="six-img">
+                    <img src="./static/img/two.png" alt="" class="two-img">
+                </div>
+            </div>
+        </div>
+        <div class="people-wrap">
+            <img src="./static/img/people.png" alt="" class="people-img">
+        </div>
+        <div class="cont_text">
+            <!-- <div class="textips none">点击安装后，按Home键返回桌面查看</div> -->
+            <button class="button" id="button">立即下载UUEden</button>
+
+            <!-- <div id="box" class=" ">
+                <div id="div_text"></div>
+                <div class="div_j" id="div_j"></div>
+            </div> -->
+            <!-- <div id="wrapper">
+                    <div id="progressbar">
+                        <div id="fill"></div>
+                    </div>
+                </div> -->
+        </div>
+
+    </div>
+    <div class="zz">
+        <img src="./static/img/share.png" />
+        <span class="sp">
+            <p class="p3">点击右上角按钮</p>
+            <p class="p4">选择</p>
+            <p class="p5">“在手机浏览器中打开”</p>
+            <p class="p6">即可下载</p>
+        </span>
+    </div>
+    <div class="loading none">
+        <div class="pic">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+
+</body>
+<script src="./static/js/gVerify.js"></script>
+<script>
+    // document.onreadystatechange = function(){
+    //             if(document.readyState == "complete"){
+    //                 $(".loading").fadeOut();
+    //             }
+    //         }document.documentElement.clientHeight
+    var progressbar = {
+        init: function () {
+            var fill = document.getElementById('div_text');
+            var count = 0;
+            //通过间隔定时器实现百分比文字效果,通过计算CSS动画持续时间进行间隔设置
+            var timer = setInterval(function (e) {
+                count++;
+                fill.innerHTML = count + '%';
+                if (count === 99) clearInterval(timer);
+            }, 300);
+        }
+    };
+    // progressbar.init();
+    (function () {
+        $(".content").height(document.documentElement.clientHeight);
+        // var browser = {
+        //     versions: function () {
+        //         var u = navigator.userAgent;
+        //         return {
+        //             trident: u.indexOf('Trident') > -1, //IE内核
+        //             presto: u.indexOf('Presto') > -1, //opera内核
+        //             webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        //             gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        //             mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        //             ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        //             android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        //             iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+        //             iPad: u.indexOf('iPad') > -1, //是否iPad
+        //             webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+        //             weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+        //             qq: u.match(/QQ/i) == "QQ", //是否QQ
+        //         };
+        //     }(),
+        //     language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        // }
+
+        // || browser.versions.qq
+        // if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        //     $(".zz").css("display", "block")
+        //     /////阻止页面上下滑动
+        // } else {
+        //     $(".zz").css("display", "none");
+        // }
+        var u = navigator.userAgent;
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        var bIsAndroid = ua.match(/android/i) == "android";
+        var bIsIphoneOs = u.indexOf('iPhone') > -1
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            $(".zz").css("display", "block")
+        }
+
+        // $(function () {
+        //     var url = location.search;
+        //     url = url.split('=')[1];
+        //     console.log(url);
+        //     var msg = '';
+        //     if (url == 'zh') {
+        //         msg = '立即下载UUEden';
+        //     } else if (url == 'en') {
+        //         msg = 'download now';
+        //     } else if (url == 'th') {
+        //         msg = 'ดาวน์โหลดเดี๋ยวนี้';
+        //     }
+        //     console.log(msg);
+        //     $("#button").text(msg);
+        // });
+        $(document).ready(function () {
+            var url = location.search;
+            url = url.split('=')[1];
+            console.log(url);
+            var msg = '';
+            if (url == 'zh') {
+                msg = '立即下载UUEden';
+            } else if (url == 'en') {
+                msg = 'download now';
+            } else if (url == 'th') {
+                msg = 'ดาวน์โหลดเดี๋ยวนี้';
+            }
+            console.log(msg);
+            if(msg){
+                $("#button").text(msg);
+            }
+            
+            $("#button").click(function () {
+
+                //     $(".loading").removeClass("none");
+                //     setTimeout(function () {
+                //         $(".loading").addClass("none");
+                //     }, 1000);
+                // var button = document.getElementById("button")
+                // console.log(button)
+
+                // var ua = navigator.userAgent.toLowerCase();
+                // var isWeixin = ua.indexOf('micromessenger') != -1;
+                // var bIsAndroid = ua.match(/android/i) == "android";
+                // var bIsIphoneOs = ua.match(/iphone os/i) == "iphone os";
+                var u = navigator.userAgent;
+                var ua = navigator.userAgent.toLowerCase();
+                var isWeixin = ua.indexOf('micromessenger') != -1;
+                var bIsAndroid = ua.match(/android/i) == "android";
+                var bIsIphoneOs = u.indexOf('iPhone') > -1
+                if (bIsAndroid) {
+                    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                        $(".zz").css("display", "block")
+                    } else {
+                        window.location.href = "https://api.uueden.com/Eden.apk";
+                    }
+                }
+                if (bIsIphoneOs) {
+                    // alert(2)
+                    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                        $(".zz").css("display", "block")
+                    } else {
+                        $(".textips").removeClass("none");
+                        // $("#button").addClass("none");
+                        // $("#button").text("正在下载")
+                        window.location.href = "home.html";
+
+                    }
+
+                }
+            })
+        });
+    })()
+</script>
+
+</html>

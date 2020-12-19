@@ -1,0 +1,80 @@
+body {
+    font-family: Microsoft Yahei, \5FAE\8F6F\96C5\9ED1, \5b8b\4f53, Arial, Lucida, Verdana, Helvetica, sans-serif;
+    color: #555;
+    background-color: #fff;
+   }
+   body, button, input, textarea {
+    font-size: 12px;
+    line-height: 1.531;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+   }
+   p, ul, ol, dl, dt, dd, form, blockquote {
+    margin: 0;
+    padding: 0;
+   }
+   ul, ol, li {
+    list-style: none;
+   }
+   h1, h2, h3, h4, h5, h6 {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+   }
+   em, b, i {
+    font-style: normal;
+    font-weight: normal;
+   }
+   img {
+    border: 0;
+   }
+   a {
+    text-decoration: none;
+    color: #333333;
+   }
+   a:hover {
+    text-decoration: underline;
+    color: #C70D0E;
+   }
+   img {
+    vertical-align: middle;
+   }
+   input, select {
+    font-family: Microsoft Yahei;
+    vertical-align: middle;
+   }
+   .clear {
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+   }
+   .clearfix {
+    overflow: hidden;
+    zoom: 1;
+   }
+   .none {
+    display: none;
+   }
+   #vcode {
+    cursor: pointer;
+   }
+   .captcha {
+    text-transform: uppercase;
+   }
+   .cue {
+    color: red;
+    font-size:12px;
+   }
+   label {
+     cursor: pointer;
+   }
+   .contact .top{
+        width: 750px;
+        height: 3rem;
+        background:url(../img/top1.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+   }
